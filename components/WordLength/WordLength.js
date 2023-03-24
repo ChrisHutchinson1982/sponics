@@ -8,7 +8,7 @@ export default function WordLength() {
 
   return (
     <>
-      <h2 className="text-1xl p-2 font-bold text-gray-800">Word length?</h2>
+      <h2 className="text-1xl font-bold text-gray-800">Word length?</h2>
       <div className="mb-2 grid grid-cols-4 gap-2">
         {wordLengths.map((length, i) => {
           const bgColor = length[1] ? "bg-blue-200" : "bg-white";
