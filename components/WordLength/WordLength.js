@@ -1,16 +1,23 @@
 export default function WordLength() {
+  const wordLengths = [
+    [3, false],
+    [4, true],
+    [5, false],
+    [6, false],
+  ];
+
   return (
     <>
-      <h2 className="text-2xl p-2">Word length?</h2>
+      <h2 className="text-1xl p-2 font-bold text-gray-800">Word length?</h2>
       <div className="mb-2 grid grid-cols-4 gap-2">
-        {new Array(4).fill(0).map((_, i) => {
+        {wordLengths.map((length, i) => {
+          const bgColor = length[1] ? "bg-gray-400" : "bg-white";
+
           return (
             <div
-              className={
-                "flex h-12 w-12 items-center justify-center border border-gray-400 font-bold uppercase text-black bg-white"
-              }
+              className={`flex h-12 w-12 items-center justify-center rounded border border-gray-400 font-bold uppercase text-gray-800 ${bgColor}`}
             >
-              {i + 3}
+              {length[0]}
             </div>
           );
         })}
