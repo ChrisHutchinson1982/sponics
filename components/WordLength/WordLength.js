@@ -3,6 +3,10 @@ import React, { useState } from "react";
 export default function WordLength() {
   const [wordLength, setWordLength] = useState(4);
 
+  const changeWordLength = (e) => {
+    setWordLength(parseInt(e.target.value));
+  };
+
   return (
     <>
       <div className="mb-2 grid grid-cols-4 gap-2">
@@ -13,8 +17,10 @@ export default function WordLength() {
           return (
             <button
               className={`flex h-12 w-12 items-center justify-center rounded border border-blue-600 font-bold uppercase text-gray-800 ${bgColor}`}
-              key={i}
+              key={length}
+              value={length}
               data-cy={`wordLength${length}`}
+              onClick={changeWordLength}
             >
               {length}
             </button>
