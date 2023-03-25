@@ -14,11 +14,11 @@ export default function WordLength() {
           const bgColor = length[1] ? "bg-blue-200" : "bg-white";
 
           return (
-            <div
+            <button
               className={`flex h-12 w-12 items-center justify-center rounded border border-blue-600 font-bold uppercase text-gray-800 ${bgColor}`}
             >
               {length[0]}
-            </div>
+            </button>
           );
         })}
       </div>
