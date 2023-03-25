@@ -14,6 +14,7 @@ export default function WordLength() {
             <button
               className={`flex h-12 w-12 items-center justify-center rounded border border-blue-600 font-bold uppercase text-gray-800 ${bgColor}`}
               key={i}
+              data-cy={`wordLength${length}`}
             >
               {length}
             </button>
