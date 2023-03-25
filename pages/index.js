@@ -17,7 +17,7 @@ export default function Home() {
         <WordLength wordLength={wordLength} setWordLength={setWordLength} />
         <Sound />
         <NewButton />
-        <Guess />
+        <Guess wordLength={wordLength} />
         <Result />
       </div>
     </>

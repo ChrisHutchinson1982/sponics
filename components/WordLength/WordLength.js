@@ -1,5 +1,3 @@
-import React, { useState } from "react";
-
 export default function WordLength({ wordLength, setWordLength }) {
   const changeWordLength = (e) => {
     setWordLength(parseInt(e.target.value));
