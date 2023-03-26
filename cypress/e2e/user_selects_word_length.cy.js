@@ -14,7 +14,6 @@ describe("User opens web app to select word length", () => {
     cy.visit("http://localhost:3000");
 
     cy.get('[data-cy="wordLength3"]').click();
-
     cy.get('[data-cy="guessLetter1"]').should("exist");
     cy.get('[data-cy="guessLetter2"]').should("exist");
     cy.get('[data-cy="guessLetter3"]').should("exist");
@@ -61,5 +60,30 @@ describe("User opens web app to select word length", () => {
     cy.get('[data-cy="guessLetter4"]').should("exist");
     cy.get('[data-cy="guessLetter5"]').should("exist");
     cy.get('[data-cy="guessLetter6"]').should("exist");
+  });
+
+  it("Word count button 4 has blue background as default and other have white background", () => {
+    cy.visit("http://localhost:3000");
+
+    cy.get('[data-cy="wordLength4"]').should(
+      "have.css",
+      "background-color",
+      "rgb(191, 219, 254)"
+    );
+    cy.get('[data-cy="wordLength3"]').should(
+      "have.css",
+      "background-color",
+      "rgb(255, 255, 255)"
+    );
+    cy.get('[data-cy="wordLength5"]').should(
+      "have.css",
+      "background-color",
+      "rgb(255, 255, 255)"
+    );
+    cy.get('[data-cy="wordLength6"]').should(
+      "have.css",
+      "background-color",
+      "rgb(255, 255, 255)"
+    );
   });
 });
