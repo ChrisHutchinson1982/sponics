@@ -33,4 +33,15 @@ describe("Guess", () => {
     cy.get('[data-cy="guessLetter5"]').should("exist");
     cy.get('[data-cy="guessLetter6"]').should("not.exist");
   });
+
+  it("Renders component with 6 boxes when mounted with 6 wordLength", () => {
+    cy.mount(<Guess wordLength={6} />);
+
+    cy.get('[data-cy="guessLetter1"]').should("exist");
+    cy.get('[data-cy="guessLetter2"]').should("exist");
+    cy.get('[data-cy="guessLetter3"]').should("exist");
+    cy.get('[data-cy="guessLetter4"]').should("exist");
+    cy.get('[data-cy="guessLetter5"]').should("exist");
+    cy.get('[data-cy="guessLetter6"]').should("exist");
+  });
 });
