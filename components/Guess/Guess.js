@@ -7,6 +7,7 @@ export default function Guess({ wordLength }) {
             <div
               className={`flex h-16 w-16 items-center justify-center rounded border border-blue-600 font-bold uppercase text-gray-800 bg-white`}
               key={i}
+              data-cy={`guessLetter${i + 1}`}
             ></div>
           );
         })}
