@@ -62,7 +62,7 @@ describe("User opens web app to select word length", () => {
     cy.get('[data-cy="guessLetter6"]').should("exist");
   });
 
-  it("Render word count button 4 with blue background and others with white background as default", () => {
+  it("Render word length button 4 with blue background and others with white background as default", () => {
     cy.visit("http://localhost:3000");
 
     cy.get('[data-cy="wordLength4"]').should(
@@ -87,7 +87,7 @@ describe("User opens web app to select word length", () => {
     );
   });
 
-  it("Render word count button 3 with blue background when clicked and others with white background", () => {
+  it("Render word length button 3 with blue background when clicked and others with white background", () => {
     cy.visit("http://localhost:3000");
 
     cy.get('[data-cy="wordLength3"]').click();
