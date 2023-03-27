@@ -1,6 +1,6 @@
 import { observer } from "mobx-react-lite";
 
-export default observer(function NewButton({ store }) {
+export default observer(function NextButton({ store }) {
   return (
     <>
       <button
