@@ -1,12 +1,19 @@
-import React, { useState } from "react";
+import { observer, useLocalObservable } from "mobx-react-lite";
+import React, { useState, useEffect } from "react";
 
 import Guess from "@/components/Guess/Guess";
 import NewButton from "@/components/NewButton/NewButton";
 import Result from "@/components/Result/Result";
 import Sound from "@/components/Sound/Sound";
 import WordLength from "@/components/WordLength/WordLength";
+import SponicsStore from "@/stores/SponicsStore";
 
-export default function Home() {
+export default observer(function Home() {
+  const store = useLocalObservable(() => SponicsStore);
+  useEffect(() => {
+    store.init();
+  });
+
   const [wordLength, setWordLength] = useState(4);
   return (
     <>
@@ -22,4 +29,4 @@ export default function Home() {
       </div>
     </>
   );
-}
+});
