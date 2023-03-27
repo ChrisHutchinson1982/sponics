@@ -12,7 +12,7 @@ export default observer(function Home() {
   const store = useLocalObservable(() => SponicsStore);
   useEffect(() => {
     store.init();
-  });
+  }, []);
 
   const [wordLength, setWordLength] = useState(4);
   return (
@@ -22,7 +22,7 @@ export default observer(function Home() {
           Sponics
         </h1>
         <WordLength wordLength={wordLength} setWordLength={setWordLength} />
-        <Sound />
+        <Sound sound={store.sound} />
         <NewButton />
         <Guess wordLength={wordLength} />
         <Result />
