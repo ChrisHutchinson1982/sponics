@@ -1,10 +1,6 @@
 import { observer } from "mobx-react-lite";
 
 export default observer(function WordLength({ store }) {
-  // const changeWordLength = (e) => {
-  //   setWordLength(parseInt(e.target.value));
-  // };
-
   return (
     <>
       <div className="mb-2 grid grid-cols-4 gap-2">

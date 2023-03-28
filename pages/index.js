@@ -27,7 +27,7 @@ export default observer(function Home() {
         <WordLength store={store} />
         <Sound sound={store.sound} />
         <NextButton store={store} />
-        <Guess wordLength={wordLength} />
+        <Guess wordLength={store.wordLength} />
         <Result />
       </div>
     </>
