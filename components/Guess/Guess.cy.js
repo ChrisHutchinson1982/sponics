@@ -62,4 +62,13 @@ describe("Guess", () => {
     cy.get('[data-cy="guessLetter3"]').should("contain.text", "");
     cy.get('[data-cy="guessLetter4"]').should("contain.text", "");
   });
+
+  it("Renders component with 4 boxes with containing t e and 2 empty strings when mounted with 'te' guess", () => {
+    cy.mount(<Guess wordLength={4} guess={"te"} />);
+
+    cy.get('[data-cy="guessLetter1"]').should("contain.text", "t");
+    cy.get('[data-cy="guessLetter2"]').should("contain.text", "e");
+    cy.get('[data-cy="guessLetter3"]').should("contain.text", "");
+    cy.get('[data-cy="guessLetter4"]').should("contain.text", "");
+  });
 });
