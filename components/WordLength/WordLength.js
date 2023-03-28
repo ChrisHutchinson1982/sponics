@@ -1,14 +1,17 @@
-export default function WordLength({ wordLength, setWordLength }) {
-  const changeWordLength = (e) => {
-    setWordLength(parseInt(e.target.value));
-  };
+import { observer } from "mobx-react-lite";
+
+export default observer(function WordLength({ store }) {
+  // const changeWordLength = (e) => {
+  //   setWordLength(parseInt(e.target.value));
+  // };
 
   return (
     <>
       <div className="mb-2 grid grid-cols-4 gap-2">
         {new Array(4).fill(0).map((_, i) => {
           const length = i + 3;
-          const bgColor = length === wordLength ? "bg-blue-200" : "bg-white";
+          const bgColor =
+            length === store.wordLength ? "bg-blue-200" : "bg-white";
 
           return (
             <button
@@ -16,7 +19,7 @@ export default function WordLength({ wordLength, setWordLength }) {
               key={length}
               value={length}
               data-cy={`wordLength${length}`}
-              onClick={changeWordLength}
+              onClick={store.changeWordLength}
             >
               {length}
             </button>
@@ -25,4 +28,4 @@ export default function WordLength({ wordLength, setWordLength }) {
       </div>
     </>
   );
-}
+});

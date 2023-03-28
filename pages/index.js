@@ -24,7 +24,7 @@ export default observer(function Home() {
         <h1 className="bg-gradient-to-br from-blue-600 to-blue-400 bg-clip-text text-8xl font-bold text-transparent p-8">
           Sponics
         </h1>
-        <WordLength wordLength={wordLength} setWordLength={setWordLength} />
+        <WordLength store={store} />
         <Sound sound={store.sound} />
         <NextButton store={store} />
         <Guess wordLength={wordLength} />
