@@ -12,9 +12,14 @@ export default observer(function Home() {
   const store = useLocalObservable(() => SponicsStore);
   useEffect(() => {
     store.init();
+
+    window.addEventListener("keyup", store.handleKeyup);
+
+    return () => {
+      window.removeEventListener("keyup", store.handleKeyup);
+    };
   }, []);
 
-  const [wordLength, setWordLength] = useState(4);
   return (
     <>
       <div
@@ -27,7 +32,7 @@ export default observer(function Home() {
         <WordLength store={store} />
         <Sound sound={store.sound} />
         <NextButton store={store} />
-        <Guess wordLength={store.wordLength} />
+        <Guess wordLength={store.wordLength} guess={store.guess} />
         <Result />
       </div>
     </>
