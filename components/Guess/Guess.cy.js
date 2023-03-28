@@ -53,4 +53,13 @@ describe("Guess", () => {
     cy.get('[data-cy="guessLetter3"]').should("contain.text", "s");
     cy.get('[data-cy="guessLetter4"]').should("contain.text", "t");
   });
+
+  it("Renders component with 4 boxes with containing nothing when mounted with '' guess", () => {
+    cy.mount(<Guess wordLength={4} guess={""} />);
+
+    cy.get('[data-cy="guessLetter1"]').should("contain.text", "");
+    cy.get('[data-cy="guessLetter2"]').should("contain.text", "");
+    cy.get('[data-cy="guessLetter3"]').should("contain.text", "");
+    cy.get('[data-cy="guessLetter4"]').should("contain.text", "");
+  });
 });
