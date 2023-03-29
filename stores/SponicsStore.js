@@ -7,12 +7,12 @@ export default {
 
   init() {
     this.sound = sounds[Math.floor(Math.random() * sounds.length)];
-    this.guess = "";
+    this.clearGuess();
   },
 
   changeWordLength(e) {
     this.wordLength = parseInt(e.target.value);
-    this.guess = "";
+    this.clearGuess();
   },
 
   handleKeyup(e) {
@@ -24,5 +24,9 @@ export default {
     if (this.guess.length < this.wordLength && e.key.match(/^[A-z]$/)) {
       this.guess = this.guess + e.key.toLowerCase();
     }
+  },
+
+  clearGuess() {
+    this.guess = "";
   },
 };
