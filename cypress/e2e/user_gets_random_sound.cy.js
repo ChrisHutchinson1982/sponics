@@ -1,7 +1,7 @@
 import sounds from "../../sounds.json";
 
 describe("User opens web app to select a random sound", () => {
-  it("Page shows a random sound as default", () => {
+  it("Shows a random sound as default", () => {
     cy.visit("http://localhost:3000");
 
     cy.get('[data-cy="mainContainer"]').click();
@@ -10,7 +10,7 @@ describe("User opens web app to select a random sound", () => {
       expect(x.text()).to.be.oneOf(sounds);
     });
   });
-  it("Page shows an other random sound when next button is selected", () => {
+  it("Shows an other random sound when next button is selected", () => {
     cy.visit("http://localhost:3000");
 
     cy.get('[data-cy="mainContainer"]').click();
@@ -26,7 +26,7 @@ describe("User opens web app to select a random sound", () => {
     });
   });
 
-  it("Page clear guess component boxes when next button is selected", () => {
+  it("Clears guess component boxes when next button is selected", () => {
     cy.visit("http://localhost:3000");
 
     cy.get('[data-cy="mainContainer"]').click();

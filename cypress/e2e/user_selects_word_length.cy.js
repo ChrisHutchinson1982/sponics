@@ -1,5 +1,5 @@
 describe("User opens web app to select word length", () => {
-  it("Page shows 4 guess letter boxes as default", () => {
+  it("Shows 4 guess letter boxes as default", () => {
     cy.visit("http://localhost:3000");
 
     cy.get('[data-cy="guessLetter1"]').should("exist");
@@ -10,7 +10,7 @@ describe("User opens web app to select word length", () => {
     cy.get('[data-cy="guessLetter6"]').should("not.exist");
   });
 
-  it("Page shows 3 guess letter boxes when word length 3 is clicked", () => {
+  it("Shows 3 guess letter boxes when word length 3 is clicked", () => {
     cy.visit("http://localhost:3000");
 
     cy.get('[data-cy="wordLength3"]').click();
@@ -22,7 +22,7 @@ describe("User opens web app to select word length", () => {
     cy.get('[data-cy="guessLetter6"]').should("not.exist");
   });
 
-  it("Page shows 4 guess letter boxes when word length 4 is clicked", () => {
+  it("Shows 4 guess letter boxes when word length 4 is clicked", () => {
     cy.visit("http://localhost:3000");
 
     cy.get('[data-cy="wordLength3"]').click();
@@ -36,7 +36,7 @@ describe("User opens web app to select word length", () => {
     cy.get('[data-cy="guessLetter6"]').should("not.exist");
   });
 
-  it("Page shows 5 guess letter boxes when word length 5 is clicked", () => {
+  it("Shows 5 guess letter boxes when word length 5 is clicked", () => {
     cy.visit("http://localhost:3000");
 
     cy.get('[data-cy="wordLength5"]').click();
@@ -49,7 +49,7 @@ describe("User opens web app to select word length", () => {
     cy.get('[data-cy="guessLetter6"]').should("not.exist");
   });
 
-  it("Page shows 6 guess letter boxes when word length 6 is clicked", () => {
+  it("Shows 6 guess letter boxes when word length 6 is clicked", () => {
     cy.visit("http://localhost:3000");
 
     cy.get('[data-cy="wordLength6"]').click();
@@ -112,5 +112,30 @@ describe("User opens web app to select word length", () => {
       "background-color",
       "rgb(255, 255, 255)"
     );
+  });
+
+  it("Clears guess component boxes when word lnegth is changed", () => {
+    cy.visit("http://localhost:3000");
+
+    cy.get('[data-cy="wordLength6"]').click();
+
+    cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "t" });
+    cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "e" });
+    cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "s" });
+    cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "t" });
+    cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "e" });
+    cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "d" });
+
+    cy.get('[data-cy="wordLength4"]').click();
+
+    cy.get('[data-cy="guessLetter1"]').should("not.contain.text", "t");
+    cy.get('[data-cy="guessLetter2"]').should("not.contain.text", "e");
+    cy.get('[data-cy="guessLetter3"]').should("not.contain.text", "s");
+    cy.get('[data-cy="guessLetter4"]').should("not.contain.text", "t");
+
+    cy.get('[data-cy="wordLength6"]').click();
+
+    cy.get('[data-cy="guessLetter5"]').should("not.contain.text", "e");
+    cy.get('[data-cy="guessLetter6"]').should("not.contain.text", "d");
   });
 });

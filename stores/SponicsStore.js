@@ -12,7 +12,9 @@ export default {
 
   changeWordLength(e) {
     this.wordLength = parseInt(e.target.value);
+    this.guess = "";
   },
+
   handleKeyup(e) {
     if (e.key === "Backspace") {
       this.guess = this.guess.slice(0, this.guess.length - 1);
