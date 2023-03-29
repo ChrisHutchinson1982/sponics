@@ -1,5 +1,5 @@
 import { observer, useLocalObservable } from "mobx-react-lite";
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 
 import Guess from "@/components/Guess/Guess";
 import NextButton from "@/components/NextButton/NextButton";
