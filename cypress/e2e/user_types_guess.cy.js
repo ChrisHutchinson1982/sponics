@@ -23,4 +23,17 @@ describe("User types guess", () => {
     cy.get('[data-cy="guessLetter3"]').should("contain.text", "");
     cy.get('[data-cy="guessLetter4"]').should("contain.text", "");
   });
+
+  it("Guess component box does not show non-letter values", () => {
+    cy.visit("http://localhost:3000");
+    cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "1" });
+    cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "2" });
+    cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "=" });
+    cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "/" });
+
+    cy.get('[data-cy="guessLetter1"]').should("contain.text", "");
+    cy.get('[data-cy="guessLetter2"]').should("contain.text", "");
+    cy.get('[data-cy="guessLetter3"]').should("contain.text", "");
+    cy.get('[data-cy="guessLetter4"]').should("contain.text", "");
+  });
 });
