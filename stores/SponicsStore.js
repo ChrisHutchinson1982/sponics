@@ -7,6 +7,7 @@ export default {
 
   init() {
     this.sound = sounds[Math.floor(Math.random() * sounds.length)];
+    this.guess = "";
   },
 
   changeWordLength(e) {
