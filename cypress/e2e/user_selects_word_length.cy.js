@@ -114,7 +114,7 @@ describe("User opens web app to select word length", () => {
     );
   });
 
-  it("Clears guess component boxes when word lnegth is changed", () => {
+  it("Clears guess from excess component boxes when word length is reduced", () => {
     cy.visit("http://localhost:3000");
 
     cy.get('[data-cy="wordLength6"]').click();
@@ -128,10 +128,10 @@ describe("User opens web app to select word length", () => {
 
     cy.get('[data-cy="wordLength4"]').click();
 
-    cy.get('[data-cy="guessLetter1"]').should("not.contain.text", "t");
-    cy.get('[data-cy="guessLetter2"]').should("not.contain.text", "e");
-    cy.get('[data-cy="guessLetter3"]').should("not.contain.text", "s");
-    cy.get('[data-cy="guessLetter4"]').should("not.contain.text", "t");
+    cy.get('[data-cy="guessLetter1"]').should("contain.text", "t");
+    cy.get('[data-cy="guessLetter2"]').should("contain.text", "e");
+    cy.get('[data-cy="guessLetter3"]').should("contain.text", "s");
+    cy.get('[data-cy="guessLetter4"]').should("contain.text", "t");
 
     cy.get('[data-cy="wordLength6"]').click();
 
