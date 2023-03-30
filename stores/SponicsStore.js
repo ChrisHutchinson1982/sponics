@@ -7,9 +7,9 @@ export default {
   guess: "",
   resultMessage: "?",
 
-  // init() {
-  //   this.getSound();
-  // },
+  init() {
+    this.clearGuess();
+  },
 
   changeSound() {
     this.getSound();
