@@ -11,7 +11,7 @@ import SponicsStore from "@/stores/SponicsStore";
 export default observer(function Home() {
   const store = useLocalObservable(() => SponicsStore);
   useEffect(() => {
-    store.init();
+    // store.init();
 
     window.addEventListener("keyup", store.handleKeyup);
 
@@ -33,7 +33,7 @@ export default observer(function Home() {
         <Sound sound={store.sound} />
         <NextButton store={store} />
         <Guess wordLength={store.wordLength} guess={store.guess} />
-        <Result />
+        <Result resultMessage={store.resultMessage} />
       </div>
     </>
   );

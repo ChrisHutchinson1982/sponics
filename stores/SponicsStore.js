@@ -2,17 +2,19 @@ import sounds from "../sounds.json";
 import words from "../words.json";
 
 export default {
-  sound: "",
+  sound: "a",
   wordLength: 4,
   guess: "",
+  resultMessage: "?",
 
-  init() {
-    this.getSound();
-  },
+  // init() {
+  //   this.getSound();
+  // },
 
   changeSound() {
     this.getSound();
     this.clearGuess();
+    this.resultMessage = "?";
   },
 
   changeWordLength(e) {
@@ -24,14 +26,13 @@ export default {
   },
 
   submitGuess() {
-    console.log(this.guess);
-    console.log(this.wordLength);
     if (this.guess.length != this.wordLength) {
       console.log("Finish the word");
     } else if (!this.guess.includes(this.sound)) {
       console.log("Use the sound");
     } else if (words.includes(this.guess)) {
-      console.log("You win");
+      console.log("You Win");
+      this.resultMessage = "✓";
     }
   },
 
@@ -47,7 +48,6 @@ export default {
 
     if (this.guess.length < this.wordLength && e.key.match(/^[A-z]$/)) {
       this.guess = this.guess + e.key.toLowerCase();
-      console.log(this.guess);
     }
   },
 

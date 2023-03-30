@@ -47,4 +47,24 @@ describe("User types guess", () => {
     cy.get('[data-cy="guessLetter3"]').should("contain.text", "s");
     cy.get('[data-cy="guessLetter4"]').should("contain.text", "t");
   });
+
+  it("Results shows as correct when word is spelt correctly, is correct length and contains sound", () => {
+    cy.visit("http://localhost:3000");
+
+    cy.get('[data-cy="sound"]').should("contain.text", "a");
+
+    cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "t" });
+    cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "a" });
+    cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "n" });
+    cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "k" });
+
+    cy.get('[data-cy="guessLetter1"]').should("contain.text", "t");
+    cy.get('[data-cy="guessLetter2"]').should("contain.text", "a");
+    cy.get('[data-cy="guessLetter3"]').should("contain.text", "n");
+    cy.get('[data-cy="guessLetter4"]').should("contain.text", "k");
+
+    cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "Enter" });
+
+    cy.get('[data-cy="resultMessage"]').should("contain.text", "✓");
+  });
 });
