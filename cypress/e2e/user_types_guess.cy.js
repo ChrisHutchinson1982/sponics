@@ -48,7 +48,7 @@ describe("User types guess", () => {
     cy.get('[data-cy="guessLetter4"]').should("contain.text", "t");
   });
 
-  it("Results shows as correct when word is spelt correctly, is correct length and contains sound", () => {
+  it("Results shows a tick when word is spelt correctly, is correct length and contains sound", () => {
     cy.visit("http://localhost:3000");
 
     cy.get('[data-cy="sound"]').should("contain.text", "a");
@@ -66,5 +66,11 @@ describe("User types guess", () => {
     cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "Enter" });
 
     cy.get('[data-cy="resultMessage"]').should("contain.text", "✓");
+  });
+
+  it("Results shows a question mark beforfe guess is submitted", () => {
+    cy.visit("http://localhost:3000");
+
+    cy.get('[data-cy="resultMessage"]').should("contain.text", "?");
   });
 });
