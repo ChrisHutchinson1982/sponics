@@ -7,6 +7,7 @@ import Result from "@/components/Result/Result";
 import Sound from "@/components/Sound/Sound";
 import WordLength from "@/components/WordLength/WordLength";
 import SponicsStore from "@/stores/SponicsStore";
+import ControlButtons from "@/components/ControlButtons/ControlButtons";
 
 export default observer(function Home() {
   const store = useLocalObservable(() => SponicsStore);
@@ -34,6 +35,7 @@ export default observer(function Home() {
         <NextButton store={store} />
         <Guess wordLength={store.wordLength} guess={store.guess} />
         <Result resultMessage={store.resultMessage} />
+        <ControlButtons />
       </div>
     </>
   );

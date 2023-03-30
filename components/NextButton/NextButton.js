@@ -1,5 +1,3 @@
-// import { observer } from "mobx-react-lite";
-
 export default function NextButton({ store }) {
   return (
     <>
