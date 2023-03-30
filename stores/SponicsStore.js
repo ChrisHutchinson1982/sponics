@@ -26,15 +26,14 @@ export default {
   },
 
   submitGuess() {
-    if (this.guess.length != this.wordLength) {
-      this.resultMessage = "Too short!";
-    } else if (!this.guess.includes(this.sound)) {
-      this.resultMessage = `Where is "${this.sound}"?`;
-    } else if (words.includes(this.guess)) {
-      this.resultMessage = "✓";
-    } else {
-      this.resultMessage = "✖";
-    }
+    this.resultMessage =
+      this.guess.length != this.wordLength
+        ? "Too short!"
+        : !this.guess.includes(this.sound)
+        ? `Where is "${this.sound}"?`
+        : words.includes(this.guess)
+        ? "✓"
+        : "✖";
   },
 
   handleKeyup(e) {
