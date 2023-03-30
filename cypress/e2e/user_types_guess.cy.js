@@ -103,7 +103,7 @@ describe("User types guess", () => {
     cy.get('[data-cy="resultMessage"]').should("contain.text", "Too short!");
   });
 
-  it("Results shows where is a when word is missing sound", () => {
+  it("Results shows where is a? when word is missing sound", () => {
     cy.visit("http://localhost:3000");
 
     cy.get('[data-cy="sound"]').should("contain.text", "a");
