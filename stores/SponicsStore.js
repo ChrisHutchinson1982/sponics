@@ -27,12 +27,14 @@ export default {
 
   submitGuess() {
     if (this.guess.length != this.wordLength) {
-      console.log("Finish the word");
+      this.resultMessage = "Too short!";
     } else if (!this.guess.includes(this.sound)) {
-      console.log("Use the sound");
+      this.resultMessage = `Where is "${this.sound}"?`;
     } else if (words.includes(this.guess)) {
-      console.log("You Win");
       this.resultMessage = "✓";
+    } else {
+      this.resultMessage = "✖";
+      h;
     }
   },
 
