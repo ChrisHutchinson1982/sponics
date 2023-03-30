@@ -9,12 +9,13 @@ export default {
 
   init() {
     this.clearGuess();
+    this.resetMessage();
   },
 
   changeSound() {
     this.getSound();
     this.clearGuess();
-    this.resultMessage = "?";
+    this.resetMessage();
   },
 
   changeWordLength(e) {
@@ -57,5 +58,9 @@ export default {
 
   getSound() {
     this.sound = sounds[Math.floor(Math.random() * sounds.length)];
+  },
+
+  resetMessage() {
+    this.resultMessage = "?";
   },
 };
