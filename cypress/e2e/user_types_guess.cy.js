@@ -89,7 +89,7 @@ describe("User types guess", () => {
     cy.get('[data-cy="resultMessage"]').should("contain.text", "✖");
   });
 
-  it("Results shows a too short when word is lees than worde length", () => {
+  it("Results shows a too short when word is less than word length", () => {
     cy.visit("http://localhost:3000");
 
     cy.get('[data-cy="sound"]').should("contain.text", "a");
@@ -101,5 +101,20 @@ describe("User types guess", () => {
     cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "Enter" });
 
     cy.get('[data-cy="resultMessage"]').should("contain.text", "Too short!");
+  });
+
+  it("Results shows where is a when word is missing sound", () => {
+    cy.visit("http://localhost:3000");
+
+    cy.get('[data-cy="sound"]').should("contain.text", "a");
+
+    cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "t" });
+    cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "i" });
+    cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "n" });
+    cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "g" });
+
+    cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "Enter" });
+
+    cy.get('[data-cy="resultMessage"]').should("contain.text", `Where is "a"?`);
   });
 });
