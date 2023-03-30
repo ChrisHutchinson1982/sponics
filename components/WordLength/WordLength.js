@@ -1,6 +1,4 @@
-import { observer } from "mobx-react-lite";
-
-export default observer(function WordLength({ store }) {
+export default function WordLength({ store }) {
   return (
     <>
       <div className="mb-2 grid grid-cols-4 gap-2">
@@ -24,4 +22,4 @@ export default observer(function WordLength({ store }) {
       </div>
     </>
   );
-});
+}
