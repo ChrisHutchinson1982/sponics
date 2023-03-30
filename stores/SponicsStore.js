@@ -34,7 +34,6 @@ export default {
       this.resultMessage = "✓";
     } else {
       this.resultMessage = "✖";
-      h;
     }
   },
 

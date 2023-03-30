@@ -68,9 +68,29 @@ describe("User types guess", () => {
     cy.get('[data-cy="resultMessage"]').should("contain.text", "✓");
   });
 
-  it("Results shows a question mark beforfe guess is submitted", () => {
+  it("Results shows a question mark before guess is submitted", () => {
     cy.visit("http://localhost:3000");
 
     cy.get('[data-cy="resultMessage"]').should("contain.text", "?");
+  });
+
+  it("Results shows a cross when word is spelt incorrectly but is correct length and contains sound", () => {
+    cy.visit("http://localhost:3000");
+
+    cy.get('[data-cy="sound"]').should("contain.text", "a");
+
+    cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "a" });
+    cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "a" });
+    cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "a" });
+    cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "a" });
+
+    cy.get('[data-cy="guessLetter1"]').should("contain.text", "a");
+    cy.get('[data-cy="guessLetter2"]').should("contain.text", "a");
+    cy.get('[data-cy="guessLetter3"]').should("contain.text", "a");
+    cy.get('[data-cy="guessLetter4"]').should("contain.text", "a");
+
+    cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "Enter" });
+
+    cy.get('[data-cy="resultMessage"]').should("contain.text", "✖");
   });
 });
