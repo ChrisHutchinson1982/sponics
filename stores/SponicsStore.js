@@ -5,7 +5,7 @@ export default {
   sound: "a",
   wordLength: 3,
   guess: "",
-  resultMessage: "?",
+  resultMessage: `Spell a word using "a"`,
 
   init() {
     this.clearGuess();
@@ -61,6 +61,6 @@ export default {
   },
 
   resetMessage() {
-    this.resultMessage = "?";
+    this.resultMessage = `Spell a word using "${this.sound}"`;
   },
 };

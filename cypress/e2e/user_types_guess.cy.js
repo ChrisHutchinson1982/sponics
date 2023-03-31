@@ -81,10 +81,13 @@ describe("User types guess", () => {
     cy.get('[data-cy="resultMessage"]').should("contain.text", "✓");
   });
 
-  it("Results shows a question mark before guess is submitted", () => {
+  it("Results shows a standrd message before guess is submitted", () => {
     cy.visit("http://localhost:3000");
 
-    cy.get('[data-cy="resultMessage"]').should("contain.text", "?");
+    cy.get('[data-cy="resultMessage"]').should(
+      "contain.text",
+      'Spell a word using "a"'
+    );
   });
 
   it("Results shows a cross when word is spelt incorrectly but is correct length and contains sound", () => {
