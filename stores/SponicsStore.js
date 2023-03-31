@@ -3,7 +3,7 @@ import words from "../words.json";
 
 export default {
   sound: "a",
-  wordLength: 4,
+  wordLength: 3,
   guess: "",
   resultMessage: "?",
 

@@ -1,6 +1,9 @@
 describe("User types guess", () => {
   it("Guess shows in guess component boxes", () => {
     cy.visit("http://localhost:3000");
+
+    cy.get('[data-cy="wordLength4"]').click();
+
     cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "t" });
     cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "e" });
     cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "s" });
@@ -14,6 +17,9 @@ describe("User types guess", () => {
 
   it("Guess letter is removed from component box when Backspace is pressed", () => {
     cy.visit("http://localhost:3000");
+
+    cy.get('[data-cy="wordLength4"]').click();
+
     cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "t" });
     cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "e" });
     cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "Backspace" });
@@ -24,6 +30,9 @@ describe("User types guess", () => {
 
   it("Guess component box does not show non-letter values", () => {
     cy.visit("http://localhost:3000");
+
+    cy.get('[data-cy="wordLength4"]').click();
+
     cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "1" });
     cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "2" });
     cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "=" });
@@ -37,6 +46,9 @@ describe("User types guess", () => {
 
   it("Guess shows in guess component boxes in lowercase", () => {
     cy.visit("http://localhost:3000");
+
+    cy.get('[data-cy="wordLength4"]').click();
+
     cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "T" });
     cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "E" });
     cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "S" });
@@ -52,6 +64,7 @@ describe("User types guess", () => {
     cy.visit("http://localhost:3000");
 
     cy.get('[data-cy="sound"]').should("contain.text", "a");
+    cy.get('[data-cy="wordLength4"]').click();
 
     cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "t" });
     cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "a" });
@@ -78,6 +91,7 @@ describe("User types guess", () => {
     cy.visit("http://localhost:3000");
 
     cy.get('[data-cy="sound"]').should("contain.text", "a");
+    cy.get('[data-cy="wordLength4"]').click();
 
     cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "a" });
     cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "a" });
@@ -93,6 +107,7 @@ describe("User types guess", () => {
     cy.visit("http://localhost:3000");
 
     cy.get('[data-cy="sound"]').should("contain.text", "a");
+    cy.get('[data-cy="wordLength4"]').click();
 
     cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "t" });
     cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "a" });
@@ -107,6 +122,7 @@ describe("User types guess", () => {
     cy.visit("http://localhost:3000");
 
     cy.get('[data-cy="sound"]').should("contain.text", "a");
+    cy.get('[data-cy="wordLength4"]').click();
 
     cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "t" });
     cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "i" });
