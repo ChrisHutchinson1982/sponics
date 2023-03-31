@@ -2,7 +2,7 @@ import { observer, useLocalObservable } from "mobx-react-lite";
 import React, { useEffect } from "react";
 
 import Guess from "@/components/Guess/Guess";
-import NextButton from "@/components/NextButton/NextButton";
+import Button from "@/components/Button/Button";
 import Result from "@/components/Result/Result";
 import Sound from "@/components/Sound/Sound";
 import WordLength from "@/components/WordLength/WordLength";
@@ -32,7 +32,7 @@ export default observer(function Home() {
         </h1>
         <WordLength store={store} />
         <Sound sound={store.sound} />
-        <NextButton store={store} />
+        <Button buttonType={["next", store.changeSound, 24]} i={0} />;
         <Guess wordLength={store.wordLength} guess={store.guess} />
         <Result resultMessage={store.resultMessage} />
         <ControlButtons store={store} />

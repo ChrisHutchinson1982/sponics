@@ -1,11 +1,12 @@
-import NextButton from "./NextButton";
+import Button from "./Button";
 
-describe("Nextbutton", () => {
+describe("Button", () => {
   let storeMock;
 
   it("Renders component with when mounted", () => {
     storeMock = cy.stub();
-    cy.mount(<NextButton store={storeMock} />);
+
+    cy.mount(<Button buttonType={["next", storeMock, 24]} i={0} />);
 
     cy.get('[data-cy="nextButton"]').should("exist");
   });
