@@ -3,18 +3,19 @@ import words from "../words.json";
 
 export default {
   sound: "a",
-  wordLength: 4,
+  wordLength: 3,
   guess: "",
-  resultMessage: "?",
+  resultMessage: `Spell a word using "a"`,
 
-  // init() {
-  //   this.getSound();
-  // },
+  init() {
+    this.clearGuess();
+    this.resetMessage();
+  },
 
   changeSound() {
     this.getSound();
     this.clearGuess();
-    this.resultMessage = "?";
+    this.resetMessage();
   },
 
   changeWordLength(e) {
@@ -26,21 +27,20 @@ export default {
   },
 
   submitGuess() {
-    if (this.guess.length != this.wordLength) {
-      this.resultMessage = "Too short!";
-    } else if (!this.guess.includes(this.sound)) {
-      this.resultMessage = `Where is "${this.sound}"?`;
-    } else if (words.includes(this.guess)) {
-      this.resultMessage = "✓";
-    } else {
-      this.resultMessage = "✖";
-    }
+    this.resultMessage =
+      this.guess.length != this.wordLength
+        ? "Too short!"
+        : !this.guess.includes(this.sound)
+        ? `Where is "${this.sound}"?`
+        : words.includes(this.guess)
+        ? "Correct, well done!"
+        : "Not a word, try again...";
   },
 
   handleKeyup(e) {
-    if (e.key === "Enter") {
-      return this.submitGuess();
-    }
+    // if (e.key === "Enter") {
+    //   return this.submitGuess();
+    // }
 
     if (e.key === "Backspace") {
       this.guess = this.guess.slice(0, this.guess.length - 1);
@@ -58,5 +58,9 @@ export default {
 
   getSound() {
     this.sound = sounds[Math.floor(Math.random() * sounds.length)];
+  },
+
+  resetMessage() {
+    this.resultMessage = `Spell a word using "${this.sound}"`;
   },
 };

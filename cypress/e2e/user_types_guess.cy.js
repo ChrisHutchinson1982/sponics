@@ -1,6 +1,9 @@
 describe("User types guess", () => {
   it("Guess shows in guess component boxes", () => {
     cy.visit("http://localhost:3000");
+
+    cy.get('[data-cy="wordLength4"]').click();
+
     cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "t" });
     cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "e" });
     cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "s" });
@@ -14,6 +17,9 @@ describe("User types guess", () => {
 
   it("Guess letter is removed from component box when Backspace is pressed", () => {
     cy.visit("http://localhost:3000");
+
+    cy.get('[data-cy="wordLength4"]').click();
+
     cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "t" });
     cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "e" });
     cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "Backspace" });
@@ -24,6 +30,9 @@ describe("User types guess", () => {
 
   it("Guess component box does not show non-letter values", () => {
     cy.visit("http://localhost:3000");
+
+    cy.get('[data-cy="wordLength4"]').click();
+
     cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "1" });
     cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "2" });
     cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "=" });
@@ -37,6 +46,9 @@ describe("User types guess", () => {
 
   it("Guess shows in guess component boxes in lowercase", () => {
     cy.visit("http://localhost:3000");
+
+    cy.get('[data-cy="wordLength4"]').click();
+
     cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "T" });
     cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "E" });
     cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "S" });
@@ -52,6 +64,7 @@ describe("User types guess", () => {
     cy.visit("http://localhost:3000");
 
     cy.get('[data-cy="sound"]').should("contain.text", "a");
+    cy.get('[data-cy="wordLength4"]').click();
 
     cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "t" });
     cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "a" });
@@ -63,42 +76,53 @@ describe("User types guess", () => {
     cy.get('[data-cy="guessLetter3"]').should("contain.text", "n");
     cy.get('[data-cy="guessLetter4"]').should("contain.text", "k");
 
-    cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "Enter" });
+    cy.get('[data-cy="submitButton"]').click();
 
-    cy.get('[data-cy="resultMessage"]').should("contain.text", "✓");
+    cy.get('[data-cy="resultMessage"]').should(
+      "contain.text",
+      "Correct, well done!"
+    );
   });
 
-  it("Results shows a question mark before guess is submitted", () => {
+  it("Results shows a standard message before guess is submitted", () => {
     cy.visit("http://localhost:3000");
 
-    cy.get('[data-cy="resultMessage"]').should("contain.text", "?");
+    cy.get('[data-cy="resultMessage"]').should(
+      "contain.text",
+      'Spell a word using "a"'
+    );
   });
 
   it("Results shows a cross when word is spelt incorrectly but is correct length and contains sound", () => {
     cy.visit("http://localhost:3000");
 
     cy.get('[data-cy="sound"]').should("contain.text", "a");
+    cy.get('[data-cy="wordLength4"]').click();
 
     cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "a" });
     cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "a" });
     cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "a" });
     cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "a" });
 
-    cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "Enter" });
+    cy.get('[data-cy="submitButton"]').click();
 
-    cy.get('[data-cy="resultMessage"]').should("contain.text", "✖");
+    cy.get('[data-cy="resultMessage"]').should(
+      "contain.text",
+      "Not a word, try again..."
+    );
   });
 
   it("Results shows a too short when word is less than word length", () => {
     cy.visit("http://localhost:3000");
 
     cy.get('[data-cy="sound"]').should("contain.text", "a");
+    cy.get('[data-cy="wordLength4"]').click();
 
     cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "t" });
     cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "a" });
     cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "n" });
 
-    cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "Enter" });
+    cy.get('[data-cy="submitButton"]').click();
 
     cy.get('[data-cy="resultMessage"]').should("contain.text", "Too short!");
   });
@@ -107,14 +131,37 @@ describe("User types guess", () => {
     cy.visit("http://localhost:3000");
 
     cy.get('[data-cy="sound"]').should("contain.text", "a");
+    cy.get('[data-cy="wordLength4"]').click();
 
     cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "t" });
     cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "i" });
     cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "n" });
     cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "g" });
 
-    cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "Enter" });
+    cy.get('[data-cy="submitButton"]').click();
 
     cy.get('[data-cy="resultMessage"]').should("contain.text", `Where is "a"?`);
+  });
+
+  it("Guess bboxesd are cleared and message reset when Reset button is selected", () => {
+    cy.visit("http://localhost:3000");
+
+    cy.get('[data-cy="sound"]').should("contain.text", "a");
+
+    cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "t" });
+    cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "i" });
+    cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "n" });
+
+    cy.get('[data-cy="submitButton"]').click();
+    cy.get('[data-cy="resultMessage"]').should("contain.text", `Where is "a"?`);
+
+    cy.get('[data-cy="resetButton"]').click();
+    cy.get('[data-cy="guessLetter1"]').should("not.contain.text", "t");
+    cy.get('[data-cy="guessLetter2"]').should("not.contain.text", "i");
+    cy.get('[data-cy="guessLetter3"]').should("not.contain.text", "n");
+    cy.get('[data-cy="resultMessage"]').should(
+      "contain.text",
+      'Spell a word using "a"'
+    );
   });
 });
