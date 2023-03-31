@@ -1,7 +1,7 @@
 export default function Guess({ wordLength, guess }) {
   return (
     <>
-      <div className={`mb-2 grid grid-cols-${wordLength} gap-2`}>
+      <div className={`mb-2 grid grid-cols-6 gap-2`}>
         {new Array(wordLength).fill(0).map((_, i) => {
           return (
             <div
