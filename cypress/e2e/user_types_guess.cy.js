@@ -63,7 +63,7 @@ describe("User types guess", () => {
     cy.get('[data-cy="guessLetter3"]').should("contain.text", "n");
     cy.get('[data-cy="guessLetter4"]').should("contain.text", "k");
 
-    cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "Enter" });
+    cy.get('[data-cy="submitButton"]').click();
 
     cy.get('[data-cy="resultMessage"]').should("contain.text", "✓");
   });
@@ -84,7 +84,7 @@ describe("User types guess", () => {
     cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "a" });
     cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "a" });
 
-    cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "Enter" });
+    cy.get('[data-cy="submitButton"]').click();
 
     cy.get('[data-cy="resultMessage"]').should("contain.text", "✖");
   });
@@ -98,7 +98,7 @@ describe("User types guess", () => {
     cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "a" });
     cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "n" });
 
-    cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "Enter" });
+    cy.get('[data-cy="submitButton"]').click();
 
     cy.get('[data-cy="resultMessage"]').should("contain.text", "Too short!");
   });
@@ -113,7 +113,7 @@ describe("User types guess", () => {
     cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "n" });
     cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "g" });
 
-    cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "Enter" });
+    cy.get('[data-cy="submitButton"]').click();
 
     cy.get('[data-cy="resultMessage"]').should("contain.text", `Where is "a"?`);
   });

@@ -3,8 +3,8 @@ export default function ControlButtons({ store }) {
     <>
       <div className="mb-2 grid grid-cols-2 gap-8">
         {[
-          ["Reset", store.init],
-          ["Submit", store.submitGuess],
+          ["reset", store.init],
+          ["submit", store.submitGuess],
         ].map((buttonType, i) => {
           return (
             <button

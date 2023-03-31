@@ -38,9 +38,9 @@ export default {
   },
 
   handleKeyup(e) {
-    if (e.key === "Enter") {
-      return this.submitGuess();
-    }
+    // if (e.key === "Enter") {
+    //   return this.submitGuess();
+    // }
 
     if (e.key === "Backspace") {
       this.guess = this.guess.slice(0, this.guess.length - 1);
