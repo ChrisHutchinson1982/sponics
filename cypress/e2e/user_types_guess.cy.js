@@ -131,15 +131,37 @@ describe("User types guess", () => {
     cy.visit("http://localhost:3000");
 
     cy.get('[data-cy="sound"]').should("contain.text", "a");
-    // cy.get('[data-cy="wordLength4"]').click();
+    cy.get('[data-cy="wordLength4"]').click();
 
     cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "t" });
     cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "i" });
     cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "n" });
-    // cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "g" });
+    cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "g" });
 
     cy.get('[data-cy="submitButton"]').click();
 
     cy.get('[data-cy="resultMessage"]').should("contain.text", `Where is "a"?`);
+  });
+
+  it("Guess bboxesd are cleared and message reset when Reset button is selected", () => {
+    cy.visit("http://localhost:3000");
+
+    cy.get('[data-cy="sound"]').should("contain.text", "a");
+
+    cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "t" });
+    cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "i" });
+    cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "n" });
+
+    cy.get('[data-cy="submitButton"]').click();
+    cy.get('[data-cy="resultMessage"]').should("contain.text", `Where is "a"?`);
+
+    cy.get('[data-cy="resetButton"]').click();
+    cy.get('[data-cy="guessLetter1"]').should("not.contain.text", "t");
+    cy.get('[data-cy="guessLetter2"]').should("not.contain.text", "i");
+    cy.get('[data-cy="guessLetter3"]').should("not.contain.text", "n");
+    cy.get('[data-cy="resultMessage"]').should(
+      "contain.text",
+      'Spell a word using "a"'
+    );
   });
 });
