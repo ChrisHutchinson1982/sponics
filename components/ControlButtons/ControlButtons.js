@@ -8,7 +8,7 @@ export default function ControlButtons({ store }) {
           { name: "reset", action: store.init, width: 36 },
           { name: "submit", action: store.submitGuess, width: 36 },
         ].map((buttonType, i) => {
-          return <Button buttonType={buttonType} i={i} />;
+          return <Button buttonType={buttonType} key={i} />;
         })}
       </div>
     </>
