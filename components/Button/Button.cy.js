@@ -3,7 +3,7 @@ import Button from "./Button";
 describe("Button", () => {
   let actionMock;
 
-  it("Renders component with when mounted", () => {
+  it("Renders component with button when mounted", () => {
     actionMock = cy.stub();
 
     cy.mount(
