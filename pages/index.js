@@ -32,7 +32,11 @@ export default observer(function Home() {
         </h1>
         <WordLength store={store} />
         <Sound sound={store.sound} />
-        <Button buttonType={["next", store.changeSound, 24]} i={0} />;
+        <Button
+          buttonType={{ name: "next", action: store.changeSound, width: 24 }}
+          i={0}
+        />
+        ;
         <Guess wordLength={store.wordLength} guess={store.guess} />
         <Result resultMessage={store.resultMessage} />
         <ControlButtons store={store} />

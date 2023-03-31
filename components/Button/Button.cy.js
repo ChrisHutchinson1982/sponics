@@ -1,12 +1,17 @@
 import Button from "./Button";
 
 describe("Button", () => {
-  let storeMock;
+  let actionMock;
 
   it("Renders component with when mounted", () => {
-    storeMock = cy.stub();
+    actionMock = cy.stub();
 
-    cy.mount(<Button buttonType={["next", storeMock, 24]} i={0} />);
+    cy.mount(
+      <Button
+        buttonType={{ name: "next", action: actionMock, width: 24 }}
+        i={0}
+      />
+    );
 
     cy.get('[data-cy="nextButton"]').should("exist");
   });

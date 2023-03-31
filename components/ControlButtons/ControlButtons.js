@@ -5,8 +5,8 @@ export default function ControlButtons({ store }) {
     <>
       <div className="mb-2 grid grid-cols-2 gap-8 mt-8">
         {[
-          ["reset", store.init, 36],
-          ["submit", store.submitGuess, 36],
+          { name: "reset", action: store.init, width: 36 },
+          { name: "submit", action: store.submitGuess, width: 36 },
         ].map((buttonType, i) => {
           return <Button buttonType={buttonType} i={i} />;
         })}
