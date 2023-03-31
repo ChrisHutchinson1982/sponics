@@ -78,10 +78,13 @@ describe("User types guess", () => {
 
     cy.get('[data-cy="submitButton"]').click();
 
-    cy.get('[data-cy="resultMessage"]').should("contain.text", "✓");
+    cy.get('[data-cy="resultMessage"]').should(
+      "contain.text",
+      "Correct, well done!"
+    );
   });
 
-  it("Results shows a standrd message before guess is submitted", () => {
+  it("Results shows a standard message before guess is submitted", () => {
     cy.visit("http://localhost:3000");
 
     cy.get('[data-cy="resultMessage"]').should(
@@ -103,7 +106,10 @@ describe("User types guess", () => {
 
     cy.get('[data-cy="submitButton"]').click();
 
-    cy.get('[data-cy="resultMessage"]').should("contain.text", "✖");
+    cy.get('[data-cy="resultMessage"]').should(
+      "contain.text",
+      "Not a word, try again..."
+    );
   });
 
   it("Results shows a too short when word is less than word length", () => {
@@ -125,12 +131,12 @@ describe("User types guess", () => {
     cy.visit("http://localhost:3000");
 
     cy.get('[data-cy="sound"]').should("contain.text", "a");
-    cy.get('[data-cy="wordLength4"]').click();
+    // cy.get('[data-cy="wordLength4"]').click();
 
     cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "t" });
     cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "i" });
     cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "n" });
-    cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "g" });
+    // cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "g" });
 
     cy.get('[data-cy="submitButton"]').click();
 

@@ -33,8 +33,8 @@ export default {
         : !this.guess.includes(this.sound)
         ? `Where is "${this.sound}"?`
         : words.includes(this.guess)
-        ? "✓"
-        : "✖";
+        ? "Correct, well done!"
+        : "Not a word, try again...";
   },
 
   handleKeyup(e) {
