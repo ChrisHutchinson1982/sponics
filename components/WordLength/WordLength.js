@@ -9,7 +9,7 @@ export default function WordLength({ store }) {
 
           return (
             <button
-              className={`flex h-12 w-12 items-center justify-center rounded border border-blue-600 font-bold uppercase text-gray-800 ${bgColor}`}
+              className={`flex h-10 w-10 items-center justify-center rounded-m border border-blue-600 font-bold uppercase text-gray-800 ${bgColor}`}
               key={length}
               value={length}
               data-cy={`wordLength${length}`}
