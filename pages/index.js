@@ -8,12 +8,11 @@ import Sound from "@/components/Sound/Sound";
 import WordLength from "@/components/WordLength/WordLength";
 import SponicsStore from "@/stores/SponicsStore";
 import ControlButtons from "@/components/ControlButtons/ControlButtons";
+import Qwerty from "@/components/Qwerty/Qwerty";
 
 export default observer(function Home() {
   const store = useLocalObservable(() => SponicsStore);
   useEffect(() => {
-    // store.init();
-
     window.addEventListener("keyup", store.handleKeyup);
 
     return () => {
@@ -40,6 +39,7 @@ export default observer(function Home() {
         <Guess wordLength={store.wordLength} guess={store.guess} />
         <Result resultMessage={store.resultMessage} />
         <ControlButtons store={store} />
+        <Qwerty />
       </div>
     </>
   );
