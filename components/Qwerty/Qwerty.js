@@ -10,6 +10,7 @@ export default function Qwerty({ store }) {
                 className={`rounded-m m-px flex h-8 w-8 items-center justify-center bg-white`}
                 key={char}
                 value={char}
+                data-cy={`qwerty${char}`}
                 onClick={store.handleQwerty}
               >
                 {char}

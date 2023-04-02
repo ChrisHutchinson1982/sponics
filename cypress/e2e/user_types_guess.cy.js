@@ -164,4 +164,31 @@ describe("User types guess", () => {
       'Spell a word using "a"'
     );
   });
+
+  it("Guess shows in guess component boxes when on screen qwerty keys are clicked", () => {
+    cy.visit("http://localhost:3000");
+
+    cy.get('[data-cy="wordLength4"]').click();
+
+    cy.get('[data-cy="qwertyt"]').click();
+    cy.get('[data-cy="qwertye"]').click();
+    cy.get('[data-cy="qwertys"]').click();
+    cy.get('[data-cy="qwertyt"]').click();
+
+    cy.get('[data-cy="guessLetter1"]').should("contain.text", "t");
+    cy.get('[data-cy="guessLetter2"]').should("contain.text", "e");
+    cy.get('[data-cy="guessLetter3"]').should("contain.text", "s");
+    cy.get('[data-cy="guessLetter4"]').should("contain.text", "t");
+  });
+
+  it("Guess letter is removed from component box when on screen qwerty Backspace is pressed", () => {
+    cy.visit("http://localhost:3000");
+
+    cy.get('[data-cy="qwertyt"]').click();
+    cy.get('[data-cy="qwertye"]').click();
+    cy.get('[data-cy="qwerty⌫"]').click();
+
+    cy.get('[data-cy="guessLetter1"]').should("contain.text", "t");
+    cy.get('[data-cy="guessLetter2"]').should("not.contain.text", "e");
+  });
 });
