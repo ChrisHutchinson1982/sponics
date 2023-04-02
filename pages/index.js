@@ -38,7 +38,7 @@ export default observer(function Home() {
         <Guess wordLength={store.wordLength} guess={store.guess} />
         <Result resultMessage={store.resultMessage} />
         <ControlButtons store={store} />
-        <Qwerty />
+        <Qwerty store={store} />
       </div>
     </>
   );

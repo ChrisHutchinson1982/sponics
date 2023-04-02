@@ -52,6 +52,24 @@ export default {
     }
   },
 
+  handleQwerty(e) {
+    // if (e.key === "Enter") {
+    //   return this.submitGuess();
+    // }
+
+    if (e.target.value === "Backspace") {
+      this.guess = this.guess.slice(0, this.guess.length - 1);
+      return;
+    }
+
+    if (
+      this.guess.length < this.wordLength &&
+      e.target.value.match(/^[A-z]$/)
+    ) {
+      this.guess = this.guess + e.target.value.toLowerCase();
+    }
+  },
+
   clearGuess() {
     this.guess = "";
   },
