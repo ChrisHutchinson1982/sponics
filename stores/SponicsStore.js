@@ -57,7 +57,7 @@ export default {
     //   return this.submitGuess();
     // }
 
-    if (e.target.value === "Backspace") {
+    if (e.target.value === "⌫") {
       this.guess = this.guess.slice(0, this.guess.length - 1);
       return;
     }
