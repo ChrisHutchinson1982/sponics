@@ -38,35 +38,25 @@ export default {
   },
 
   handleKeyup(e) {
-    // if (e.key === "Enter") {
-    //   return this.submitGuess();
-    // }
-
-    if (e.key === "Backspace") {
-      this.guess = this.guess.slice(0, this.guess.length - 1);
-      return;
-    }
-
-    if (this.guess.length < this.wordLength && e.key.match(/^[A-z]$/)) {
-      this.guess = this.guess + e.key.toLowerCase();
-    }
+    this.updateGuess(e.key);
   },
 
   handleQwerty(e) {
+    this.updateGuess(e.target.value);
+  },
+
+  updateGuess(keyPress) {
     // if (e.key === "Enter") {
     //   return this.submitGuess();
     // }
 
-    if (e.target.value === "⌫") {
+    if (keyPress === "⌫" || keyPress === "Backspace") {
       this.guess = this.guess.slice(0, this.guess.length - 1);
       return;
     }
 
-    if (
-      this.guess.length < this.wordLength &&
-      e.target.value.match(/^[A-z]$/)
-    ) {
-      this.guess = this.guess + e.target.value.toLowerCase();
+    if (this.guess.length < this.wordLength && keyPress.match(/^[A-z]$/)) {
+      this.guess = this.guess + keyPress.toLowerCase();
     }
   },
 
