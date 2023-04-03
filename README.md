@@ -10,11 +10,11 @@ The app has been hosted on vercel at the below link:
 
 ## Approach
 
-- **Store:** used astore to hold the whole state tree of application. This is tested in e2e tests but opportunity to unit test this separately.
+- **Store:** used a store to hold the whole state tree of application. This is tested in e2e tests but opportunity to unit test this separately.
 
 - **Brad Frost’s Atomic Design principle:** created a series of standalone and portable components that I have been able to reuse within different elements of the app.
 
-- **TDD, OOP and DRY:** following a Test Driven Development method, Object Oriented Programming and Do not repeat yourself approach to write clean, maintainable and efficient code.
+- **TDD, OOP and DRY:** following a Test Driven Development method, Object Oriented Programming and do not repeat yourself approach to write clean, maintainable and efficient code.
 
 - **Version Control:** using Git branching to work on the individual tickets, pushing to main on complication.
 
