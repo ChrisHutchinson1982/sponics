@@ -20,12 +20,9 @@ The app has been hosted on vercel at the below link:
 
 ## Current Progress
 
-![Screen shot 2](docs/Screenshot2.png)
-
-![Screen shot 1](docs/Screenshot1.png)
-
 ### User Stories
 
+```
 - User can select word length
 - User can select random phonics sound that must be used in guess
 - User can type guess and backspace using machine keyboard
@@ -34,8 +31,13 @@ The app has been hosted on vercel at the below link:
 - User can use clear button to clear guess
 - User can use on screen Qwerty keyboard to click guess
 - User can see component change colour to red and green based on incorrect or correct guesses
+```
 
 ### Screen shots
+
+![Screen shot 2](docs/Screenshot2.png)
+
+![Screen shot 1](docs/Screenshot1.png)
 
 # Set-up and Testing
 
