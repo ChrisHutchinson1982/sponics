@@ -27,10 +27,15 @@ The app has been hosted on vercel at the below link:
 - User can select random phonics sound that must be used in guess
 - User can type guess and backspace using machine keyboard
 - User can submit guess
-- User can see a selection of submit messages for correctly spelt word, incorrectly spelt word, if word is too short and if word does not include sound
+- User can see a selection of submit messages for:
+  - correctly spelt guess word
+  - incorrectly spelt guess word
+  - if guess word is too short
+  - if guess word does not include sound
 - User can use clear button to clear guess
 - User can use on screen Qwerty keyboard to click guess
-- User can see component change colour to red and green based on incorrect or correct guesses
+- User can see components change colour to red and green
+  based on incorrect or correct guesses
 ```
 
 ### Screen shots
@@ -84,6 +89,6 @@ Here's an overview of the technologies used to build the application.
 
 # Next steps
 
-- Additional features to enhance game play (i.e. points total, timer etc.)
+- Additional features to enhance game play (i.e. points total, timer, difficulty etc.)
 - Play around with styling to appeal to children
 - Add animation
