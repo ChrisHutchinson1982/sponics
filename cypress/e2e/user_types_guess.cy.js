@@ -123,7 +123,7 @@ describe("User types guess", () => {
     );
   });
 
-  it("Results shows a cross when word is spelt incorrectly but is correct length and contains sound", () => {
+  it("Results shows 'Not a word, try again...' message and color compoent red when word is spelt incorrectly but is correct length and contains sound", () => {
     cy.visit("http://localhost:3000");
 
     cy.get('[data-cy="sound"]').should("contain.text", "a");
@@ -138,7 +138,39 @@ describe("User types guess", () => {
 
     cy.get('[data-cy="resultMessage"]').should(
       "contain.text",
-      "Not a word, try again..."
+      "Not a word, try again...",
+      "have.css",
+      "color",
+      "rgb(220, 38, 38)"
+    );
+
+    cy.get('[data-cy="guessLetter1"]').should(
+      "contain.text",
+      "a",
+      "have.css",
+      "background-color",
+      "rgb(220, 38, 38)"
+    );
+    cy.get('[data-cy="guessLetter2"]').should(
+      "contain.text",
+      "a",
+      "have.css",
+      "background-color",
+      "rgb(220, 38, 38)"
+    );
+    cy.get('[data-cy="guessLetter3"]').should(
+      "contain.text",
+      "a",
+      "have.css",
+      "background-color",
+      "rgb(220, 38, 38)"
+    );
+    cy.get('[data-cy="guessLetter4"]').should(
+      "contain.text",
+      "a",
+      "have.css",
+      "background-color",
+      "rgb(220, 38, 38)"
     );
   });
 
