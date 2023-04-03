@@ -186,7 +186,13 @@ describe("User types guess", () => {
 
     cy.get('[data-cy="submitButton"]').click();
 
-    cy.get('[data-cy="resultMessage"]').should("contain.text", "Too short!");
+    cy.get('[data-cy="resultMessage"]').should(
+      "contain.text",
+      "Too short!",
+      "have.css",
+      "color",
+      "rgb(37, 99, 235)"
+    );
   });
 
   it("Results shows where is a? when word is missing sound", () => {
@@ -202,7 +208,13 @@ describe("User types guess", () => {
 
     cy.get('[data-cy="submitButton"]').click();
 
-    cy.get('[data-cy="resultMessage"]').should("contain.text", `Where is "a"?`);
+    cy.get('[data-cy="resultMessage"]').should(
+      "contain.text",
+      `Where is "a"?`,
+      "have.css",
+      "color",
+      "rgb(37, 99, 235)"
+    );
   });
 
   it("Guess boxes are cleared and message clear when clear button is selected", () => {
