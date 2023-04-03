@@ -109,22 +109,17 @@ describe("User types guess", () => {
       "color",
       "rgb(22, 163, 74)"
     );
-
-    // cy.get('[data-cy="resultMessage"]').should(
-    //   "have.css",
-    //   "color",
-    //   "rgb(22, 163, 74)"
-    // );
-
-    // cy.get('[data-cy="guessLetter1"]').should("contain.text", "t");
   });
 
-  it("Results shows a standard message before guess is submitted", () => {
+  it("Results shows a standard message in blue before guess is submitted", () => {
     cy.visit("http://localhost:3000");
 
     cy.get('[data-cy="resultMessage"]').should(
       "contain.text",
-      'Spell a word using "a"'
+      'Spell a word using "a"',
+      "have.css",
+      "color",
+      "rgb(37, 99, 235)"
     );
   });
 
