@@ -143,7 +143,7 @@ describe("User types guess", () => {
     cy.get('[data-cy="resultMessage"]').should("contain.text", `Where is "a"?`);
   });
 
-  it("Guess bboxesd are cleared and message reset when Reset button is selected", () => {
+  it("Guess boxes are cleared and message clear when clear button is selected", () => {
     cy.visit("http://localhost:3000");
 
     cy.get('[data-cy="sound"]').should("contain.text", "a");
@@ -155,7 +155,7 @@ describe("User types guess", () => {
     cy.get('[data-cy="submitButton"]').click();
     cy.get('[data-cy="resultMessage"]').should("contain.text", `Where is "a"?`);
 
-    cy.get('[data-cy="resetButton"]').click();
+    cy.get('[data-cy="clearButton"]').click();
     cy.get('[data-cy="guessLetter1"]').should("not.contain.text", "t");
     cy.get('[data-cy="guessLetter2"]').should("not.contain.text", "i");
     cy.get('[data-cy="guessLetter3"]').should("not.contain.text", "n");
