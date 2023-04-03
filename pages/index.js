@@ -40,7 +40,6 @@ export default observer(function Home() {
           wordLength={store.wordLength}
           guess={store.guess}
           result={store.resultMessage}
-          sound={store.sound}
         />
         <ControlButtons store={store} />
         <Qwerty store={store} />

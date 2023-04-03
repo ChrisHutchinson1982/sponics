@@ -1,4 +1,4 @@
-export default function Guess({ wordLength, guess, result, sound }) {
+export default function Guess({ wordLength, guess, result }) {
   return (
     <>
       <div className={`m-2 grid grid-cols-${wordLength} gap-2`}>
@@ -6,8 +6,6 @@ export default function Guess({ wordLength, guess, result, sound }) {
           const bgColor =
             result === "Correct, well done!"
               ? "bg-green-600"
-              : result === "Too short!"
-              ? "bg-gray-600"
               : result === "Not a word, try again..."
               ? "bg-red-600"
               : "bg-white";

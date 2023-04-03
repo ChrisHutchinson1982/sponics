@@ -20,6 +20,7 @@ export default {
 
   changeWordLength(e) {
     this.wordLength = parseInt(e.target.value);
+    this.resetMessage();
 
     if (this.guess.length > this.wordLength) {
       this.guess = this.guess.slice(0, this.wordLength);
