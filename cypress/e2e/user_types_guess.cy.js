@@ -305,4 +305,37 @@ describe("User types guess", () => {
       "rgb(255, 255, 255)"
     );
   });
+
+  it("Guess guess boxes return to white if ⌫ is clicked", () => {
+    cy.visit("http://localhost:3000");
+
+    cy.get('[data-cy="qwertyc"]').click();
+    cy.get('[data-cy="qwertya"]').click();
+    cy.get('[data-cy="qwertyt"]').click();
+    cy.get('[data-cy="submitButton"]').click();
+
+    cy.get('[data-cy="qwerty⌫"]').click();
+
+    cy.get('[data-cy="guessLetter1"]').should(
+      "contain.text",
+      "c",
+      "have.css",
+      "background-color",
+      "rgb(255, 255, 255)"
+    );
+    cy.get('[data-cy="guessLetter2"]').should(
+      "contain.text",
+      "a",
+      "have.css",
+      "background-color",
+      "rgb(255, 255, 255)"
+    );
+    cy.get('[data-cy="guessLetter3"]').should(
+      "contain.text",
+      "",
+      "have.css",
+      "background-color",
+      "rgb(255, 255, 255)"
+    );
+  });
 });
