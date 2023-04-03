@@ -60,7 +60,7 @@ describe("User types guess", () => {
     cy.get('[data-cy="guessLetter4"]').should("contain.text", "t");
   });
 
-  it("Results shows a tick when word is spelt correctly, is correct length and contains sound", () => {
+  it("Results shows 'Correct, well done' message and changes component to green when word is spelt correctly, is correct length and contains sound", () => {
     cy.visit("http://localhost:3000");
 
     cy.get('[data-cy="sound"]').should("contain.text", "a");
@@ -81,6 +81,12 @@ describe("User types guess", () => {
     cy.get('[data-cy="resultMessage"]').should(
       "contain.text",
       "Correct, well done!"
+    );
+
+    cy.get('[data-cy="resultMessage"]').should(
+      "have.css",
+      "color",
+      "rgb(22, 163, 74)"
     );
   });
 
