@@ -265,4 +265,44 @@ describe("User types guess", () => {
     cy.get('[data-cy="guessLetter1"]').should("contain.text", "t");
     cy.get('[data-cy="guessLetter2"]').should("not.contain.text", "e");
   });
+
+  it("Guess guess boxes return to white if wordLength is changed", () => {
+    cy.visit("http://localhost:3000");
+
+    cy.get('[data-cy="qwertyc"]').click();
+    cy.get('[data-cy="qwertya"]').click();
+    cy.get('[data-cy="qwertyt"]').click();
+    cy.get('[data-cy="submitButton"]').click();
+
+    cy.get('[data-cy="wordLength4"]').click();
+
+    cy.get('[data-cy="guessLetter1"]').should(
+      "contain.text",
+      "c",
+      "have.css",
+      "background-color",
+      "rgb(255, 255, 255)"
+    );
+    cy.get('[data-cy="guessLetter2"]').should(
+      "contain.text",
+      "a",
+      "have.css",
+      "background-color",
+      "rgb(255, 255, 255)"
+    );
+    cy.get('[data-cy="guessLetter3"]').should(
+      "contain.text",
+      "t",
+      "have.css",
+      "background-color",
+      "rgb(255, 255, 255)"
+    );
+    cy.get('[data-cy="guessLetter4"]').should(
+      "contain.text",
+      "",
+      "have.css",
+      "background-color",
+      "rgb(255, 255, 255)"
+    );
+  });
 });
