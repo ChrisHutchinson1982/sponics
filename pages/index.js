@@ -23,10 +23,10 @@ export default observer(function Home() {
   return (
     <>
       <div
-        className="flex h-screen w-screen flex-col items-center justify-center bg-black"
+        className="flex h-screen w-screen flex-col items-center justify-center bg-gray-100"
         data-cy="mainContainer"
       >
-        <h1 className="bg-gradient-to-br from-blue-600 to-blue-400 bg-clip-text text-6xl font-bold text-transparent pb-4">
+        <h1 className="bg-gradient-to-br from-blue-600 to-blue-400 bg-clip-text text-8xl font-bold text-transparent pb-4">
           Sponics
         </h1>
         <WordLength store={store} />
@@ -35,8 +35,8 @@ export default observer(function Home() {
           buttonType={{ name: "next", action: store.changeSound, width: 24 }}
           i={0}
         />
-        <Guess wordLength={store.wordLength} guess={store.guess} />
         <Result resultMessage={store.resultMessage} />
+        <Guess wordLength={store.wordLength} guess={store.guess} />
         <ControlButtons store={store} />
         <Qwerty store={store} />
       </div>
