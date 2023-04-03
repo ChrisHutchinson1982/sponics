@@ -20,9 +20,9 @@ The app has been hosted on vercel at the below link:
 
 ## Current Progress
 
-![Screen shot 1](docs/Screenshot1.png)
-
 ![Screen shot 2](docs/Screenshot2.png)
+
+![Screen shot 1](docs/Screenshot1.png)
 
 ### User Stories
 
