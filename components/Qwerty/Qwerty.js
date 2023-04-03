@@ -7,7 +7,7 @@ export default function Qwerty({ store }) {
           {row.split("").map((char) => {
             return (
               <button
-                className={`rounded-m m-px flex h-8 w-8 items-center justify-center bg-white`}
+                className={`rounded-m m-px flex h-9 w-9 items-center justify-center bg-white`}
                 key={char}
                 value={char}
                 data-cy={`qwerty${char}`}

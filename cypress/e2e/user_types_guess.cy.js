@@ -60,7 +60,7 @@ describe("User types guess", () => {
     cy.get('[data-cy="guessLetter4"]').should("contain.text", "t");
   });
 
-  it("Results shows a tick when word is spelt correctly, is correct length and contains sound", () => {
+  it("Results shows 'Correct, well done' message and changes component to green when word is spelt correctly, is correct length and contains sound", () => {
     cy.visit("http://localhost:3000");
 
     cy.get('[data-cy="sound"]').should("contain.text", "a");
@@ -71,29 +71,59 @@ describe("User types guess", () => {
     cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "n" });
     cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "k" });
 
-    cy.get('[data-cy="guessLetter1"]').should("contain.text", "t");
-    cy.get('[data-cy="guessLetter2"]').should("contain.text", "a");
-    cy.get('[data-cy="guessLetter3"]').should("contain.text", "n");
-    cy.get('[data-cy="guessLetter4"]').should("contain.text", "k");
+    cy.get('[data-cy="guessLetter1"]').should(
+      "contain.text",
+      "t",
+      "have.css",
+      "background-color",
+      "rgb(22, 163, 74)"
+    );
+    cy.get('[data-cy="guessLetter2"]').should(
+      "contain.text",
+      "a",
+      "have.css",
+      "background-color",
+      "rgb(22, 163, 74)"
+    );
+    cy.get('[data-cy="guessLetter3"]').should(
+      "contain.text",
+      "n",
+      "have.css",
+      "background-color",
+      "rgb(22, 163, 74)"
+    );
+    cy.get('[data-cy="guessLetter4"]').should(
+      "contain.text",
+      "k",
+      "have.css",
+      "background-color",
+      "rgb(22, 163, 74)"
+    );
 
     cy.get('[data-cy="submitButton"]').click();
 
     cy.get('[data-cy="resultMessage"]').should(
       "contain.text",
-      "Correct, well done!"
+      "Correct, well done!",
+      "have.css",
+      "color",
+      "rgb(22, 163, 74)"
     );
   });
 
-  it("Results shows a standard message before guess is submitted", () => {
+  it("Results shows a standard message in blue before guess is submitted", () => {
     cy.visit("http://localhost:3000");
 
     cy.get('[data-cy="resultMessage"]').should(
       "contain.text",
-      'Spell a word using "a"'
+      'Spell a word using "a"',
+      "have.css",
+      "color",
+      "rgb(37, 99, 235)"
     );
   });
 
-  it("Results shows a cross when word is spelt incorrectly but is correct length and contains sound", () => {
+  it("Results shows 'Not a word, try again...' message and color compoent red when word is spelt incorrectly but is correct length and contains sound", () => {
     cy.visit("http://localhost:3000");
 
     cy.get('[data-cy="sound"]').should("contain.text", "a");
@@ -108,7 +138,39 @@ describe("User types guess", () => {
 
     cy.get('[data-cy="resultMessage"]').should(
       "contain.text",
-      "Not a word, try again..."
+      "Not a word, try again...",
+      "have.css",
+      "color",
+      "rgb(220, 38, 38)"
+    );
+
+    cy.get('[data-cy="guessLetter1"]').should(
+      "contain.text",
+      "a",
+      "have.css",
+      "background-color",
+      "rgb(220, 38, 38)"
+    );
+    cy.get('[data-cy="guessLetter2"]').should(
+      "contain.text",
+      "a",
+      "have.css",
+      "background-color",
+      "rgb(220, 38, 38)"
+    );
+    cy.get('[data-cy="guessLetter3"]').should(
+      "contain.text",
+      "a",
+      "have.css",
+      "background-color",
+      "rgb(220, 38, 38)"
+    );
+    cy.get('[data-cy="guessLetter4"]').should(
+      "contain.text",
+      "a",
+      "have.css",
+      "background-color",
+      "rgb(220, 38, 38)"
     );
   });
 
@@ -124,7 +186,13 @@ describe("User types guess", () => {
 
     cy.get('[data-cy="submitButton"]').click();
 
-    cy.get('[data-cy="resultMessage"]').should("contain.text", "Too short!");
+    cy.get('[data-cy="resultMessage"]').should(
+      "contain.text",
+      "Too short!",
+      "have.css",
+      "color",
+      "rgb(37, 99, 235)"
+    );
   });
 
   it("Results shows where is a? when word is missing sound", () => {
@@ -140,10 +208,16 @@ describe("User types guess", () => {
 
     cy.get('[data-cy="submitButton"]').click();
 
-    cy.get('[data-cy="resultMessage"]').should("contain.text", `Where is "a"?`);
+    cy.get('[data-cy="resultMessage"]').should(
+      "contain.text",
+      `Where is "a"?`,
+      "have.css",
+      "color",
+      "rgb(37, 99, 235)"
+    );
   });
 
-  it("Guess bboxesd are cleared and message reset when Reset button is selected", () => {
+  it("Guess boxes are cleared and message clear when clear button is selected", () => {
     cy.visit("http://localhost:3000");
 
     cy.get('[data-cy="sound"]').should("contain.text", "a");
@@ -155,7 +229,7 @@ describe("User types guess", () => {
     cy.get('[data-cy="submitButton"]').click();
     cy.get('[data-cy="resultMessage"]').should("contain.text", `Where is "a"?`);
 
-    cy.get('[data-cy="resetButton"]').click();
+    cy.get('[data-cy="clearButton"]').click();
     cy.get('[data-cy="guessLetter1"]').should("not.contain.text", "t");
     cy.get('[data-cy="guessLetter2"]').should("not.contain.text", "i");
     cy.get('[data-cy="guessLetter3"]').should("not.contain.text", "n");
@@ -190,5 +264,78 @@ describe("User types guess", () => {
 
     cy.get('[data-cy="guessLetter1"]').should("contain.text", "t");
     cy.get('[data-cy="guessLetter2"]').should("not.contain.text", "e");
+  });
+
+  it("Guess guess boxes return to white if wordLength is changed", () => {
+    cy.visit("http://localhost:3000");
+
+    cy.get('[data-cy="qwertyc"]').click();
+    cy.get('[data-cy="qwertya"]').click();
+    cy.get('[data-cy="qwertyt"]').click();
+    cy.get('[data-cy="submitButton"]').click();
+
+    cy.get('[data-cy="wordLength4"]').click();
+
+    cy.get('[data-cy="guessLetter1"]').should(
+      "contain.text",
+      "c",
+      "have.css",
+      "background-color",
+      "rgb(255, 255, 255)"
+    );
+    cy.get('[data-cy="guessLetter2"]').should(
+      "contain.text",
+      "a",
+      "have.css",
+      "background-color",
+      "rgb(255, 255, 255)"
+    );
+    cy.get('[data-cy="guessLetter3"]').should(
+      "contain.text",
+      "t",
+      "have.css",
+      "background-color",
+      "rgb(255, 255, 255)"
+    );
+    cy.get('[data-cy="guessLetter4"]').should(
+      "contain.text",
+      "",
+      "have.css",
+      "background-color",
+      "rgb(255, 255, 255)"
+    );
+  });
+
+  it("Guess guess boxes return to white if ⌫ is clicked", () => {
+    cy.visit("http://localhost:3000");
+
+    cy.get('[data-cy="qwertyc"]').click();
+    cy.get('[data-cy="qwertya"]').click();
+    cy.get('[data-cy="qwertyt"]').click();
+    cy.get('[data-cy="submitButton"]').click();
+
+    cy.get('[data-cy="qwerty⌫"]').click();
+
+    cy.get('[data-cy="guessLetter1"]').should(
+      "contain.text",
+      "c",
+      "have.css",
+      "background-color",
+      "rgb(255, 255, 255)"
+    );
+    cy.get('[data-cy="guessLetter2"]').should(
+      "contain.text",
+      "a",
+      "have.css",
+      "background-color",
+      "rgb(255, 255, 255)"
+    );
+    cy.get('[data-cy="guessLetter3"]').should(
+      "contain.text",
+      "",
+      "have.css",
+      "background-color",
+      "rgb(255, 255, 255)"
+    );
   });
 });

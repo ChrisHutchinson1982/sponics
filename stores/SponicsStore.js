@@ -20,6 +20,7 @@ export default {
 
   changeWordLength(e) {
     this.wordLength = parseInt(e.target.value);
+    this.resetMessage();
 
     if (this.guess.length > this.wordLength) {
       this.guess = this.guess.slice(0, this.wordLength);
@@ -46,12 +47,9 @@ export default {
   },
 
   updateGuess(keyPress) {
-    // if (e.key === "Enter") {
-    //   return this.submitGuess();
-    // }
-
     if (keyPress === "⌫" || keyPress === "Backspace") {
       this.guess = this.guess.slice(0, this.guess.length - 1);
+      this.resetMessage();
       return;
     }
 
