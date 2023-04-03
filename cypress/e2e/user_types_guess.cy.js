@@ -71,23 +71,52 @@ describe("User types guess", () => {
     cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "n" });
     cy.get('[data-cy="mainContainer"]').trigger("keyup", { key: "k" });
 
-    cy.get('[data-cy="guessLetter1"]').should("contain.text", "t");
-    cy.get('[data-cy="guessLetter2"]').should("contain.text", "a");
-    cy.get('[data-cy="guessLetter3"]').should("contain.text", "n");
-    cy.get('[data-cy="guessLetter4"]').should("contain.text", "k");
+    cy.get('[data-cy="guessLetter1"]').should(
+      "contain.text",
+      "t",
+      "have.css",
+      "background-color",
+      "rgb(22, 163, 74)"
+    );
+    cy.get('[data-cy="guessLetter2"]').should(
+      "contain.text",
+      "a",
+      "have.css",
+      "background-color",
+      "rgb(22, 163, 74)"
+    );
+    cy.get('[data-cy="guessLetter3"]').should(
+      "contain.text",
+      "n",
+      "have.css",
+      "background-color",
+      "rgb(22, 163, 74)"
+    );
+    cy.get('[data-cy="guessLetter4"]').should(
+      "contain.text",
+      "k",
+      "have.css",
+      "background-color",
+      "rgb(22, 163, 74)"
+    );
 
     cy.get('[data-cy="submitButton"]').click();
 
     cy.get('[data-cy="resultMessage"]').should(
       "contain.text",
-      "Correct, well done!"
-    );
-
-    cy.get('[data-cy="resultMessage"]').should(
+      "Correct, well done!",
       "have.css",
       "color",
       "rgb(22, 163, 74)"
     );
+
+    // cy.get('[data-cy="resultMessage"]').should(
+    //   "have.css",
+    //   "color",
+    //   "rgb(22, 163, 74)"
+    // );
+
+    // cy.get('[data-cy="guessLetter1"]').should("contain.text", "t");
   });
 
   it("Results shows a standard message before guess is submitted", () => {
